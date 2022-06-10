@@ -3,20 +3,23 @@ from Portfolio import Portfolio
 from faker import Faker
 from random import random
 import sys
+import json
 
 fake = Faker()
-for i in range(2):
-    stock = Stock(fake.company())
-    portfolio = Portfolio(fake.name())
-    for i in range(10):
-        stock = Stock(fake.company())
-        for i in range(10):
-            fake_date = fake.date_between(start_date='-30y', end_date='today').strftime('%d-%m-%Y')
-            stock.add_price(fake_date,
-                round(random() * 10000, 2))
+with open(sys.argv[1]) as json_file:
+    data = json.load(json_file)
+
+portfolios = []
+for portfolio_j in data:
+    portfolio = Portfolio(portfolio_j['name'])
+    for stock_j in portfolio_j['stocks']:
+        stock = Stock(stock_j['name'])
+        for price_j in stock_j['prices']:
+            stock.add_price(price_j['date'], price_j['price'])
         portfolio.add_stock(stock)
+    portfolios.append(portfolio)
 
 if __name__ == '__main__':
-    date_start = sys.argv[1]
-    date_end = sys.argv[2]
-    print(portfolio.profit(date_start, date_end))
+    date_start = sys.argv[2]
+    date_end = sys.argv[3]
+    print(portfolios[0].profit(date_start, date_end))
