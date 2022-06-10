@@ -13,8 +13,6 @@ class Stock:
     def price(self, date):
         # approximate date to the closest below if not found
         for key in self.prices:
-            # print(f"Date: {date}")
-            # print(f"Key: {key}")
             if datetime.strptime(key, '%d-%m-%Y') <= datetime.strptime(date, '%d-%m-%Y'):
                 return self.prices[key]
         return "No hay precio para esa fecha (o antes)"
