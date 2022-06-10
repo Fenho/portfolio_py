@@ -22,4 +22,4 @@ for portfolio_j in data:
 if __name__ == '__main__':
     date_start = sys.argv[2]
     date_end = sys.argv[3]
-    print(portfolios[0].profit(date_start, date_end))
+    print(f"The profit for this portfolio is {portfolios[0].profit(date_start, date_end)}%")
