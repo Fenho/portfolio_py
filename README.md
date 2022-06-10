@@ -1,6 +1,13 @@
 # Portfolio.py 🐍 for Fintual homework 📚
 A Portfolio class that has a Profit method which takes two dates and returns the profit made between those.
 
+## Classes 🦆
+### Portfolio
+Portfolio class with a name and a collection of Stocks. Has the profit method that calculates the sum of the annualized returns of all the stocks, between a given first date and older_date
+
+### Stock
+Stock class with a name and an OrderedDict (more info about this [here](https://www.geeksforgeeks.org/ordereddict-in-python/)) where the keys are dates and the values are the prices the stock had in that date 😵.
+
 ## Into the gist of it 🤠
 To run the script you just have to run this in the console:
 ```
@@ -28,14 +35,7 @@ python3 test_portfolio.py
 The first test uses the simple.json set of data, being the first date '01-01-2021', and the newest one '01-01-2022'. The portfolio tested just has 2 stocks, where each stock has 2 dates and prices.
 The second test uses the set1.json set of data, being the first date '01-01-2018', and the newest one '01-01-2021'. The portfolio tested has 10 stocks, where each stock has 10 dates and prices.
 
-## Classes 🦆
-### Portfolio
-Portfolio class with a name and a collection of Stocks. Has the profit method that calculates the sum of the annualized returns of all the stocks, between a given first date and older_date
-
-### Stock
-Stock class with a name and an OrderedDict (more info about this [here](https://www.geeksforgeeks.org/ordereddict-in-python/)) where the keys are dates and the values are the prices the stock had in that date 😵.
-
-Notes 👀:
+### Notes 👀:
 - Each price that is added to the profit is annualized.
 - Depending on the data generated you may not be able to get a value for profit with certain dates (maybe you input a start date where the year is 2010, but the oldest year in the generated daya may be 2018).
 - There is no GUI, just the console 😄
